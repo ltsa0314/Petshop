@@ -1,0 +1,109 @@
+<nb-layout>
+  <nb-layout-header fixed>
+    <button (click)="salir()" nbButton status="danger">      
+      <nb-icon icon="undo-outline"></nb-icon>Salir
+    </button>
+    <span>
+      Bienvenido a Petshop <strong>{{ fullname }}</strong></span
+    >
+    <!-- Insert header here -->
+  </nb-layout-header>
+
+  <nb-layout-column>
+    <div class="row">
+      <div class="col-8">
+        <div class="row">
+          <div class="col-md-4" *ngFor="let product of data">
+            <nb-card>
+              <nb-card-body>
+                <h5>{{ product.Name }}</h5>
+                <img [src]="product.Image" [alt]="product.Name" />
+                <p nbTooltip="{{ product.Description }}">
+                  {{ product.Description }}
+                </p>
+                <label>{{ product.Price | currency }}</label>
+              </nb-card-body>
+              <nb-card-footer>
+                <button
+                  (click)="addToCart(product)"
+                  nbButton
+                  status="success"
+                  fullWidth
+                >
+                  <nb-icon icon="shopping-cart-outline"></nb-icon>Agregar al
+                  Carrito
+                </button>
+              </nb-card-footer>
+            </nb-card>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <nb-card class="cart">
+          <nb-card-body>
+            <table class="table table-dark">
+              <thead>
+                <tr>
+                  <th scope="col">Producto</th>
+                  <th scope="col">Precio</th>
+                  <th scope="col">Cantidad</th>
+                  <th scope="col" colspan="2">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let product of order.OrderItems">
+                  <th scope="row">
+                    {{ getProductById(product.ProductId).Name }}
+                  </th>
+                  <td>
+                    {{ getProductById(product.ProductId).Price | currency }}
+                  </td>
+
+                  <td>
+                    <input
+                      type="number"
+                      min="1"
+                      fullWidth="true"
+                      nbInput
+                      [(ngModel)]="product.Count"
+                      (change)="calculate()"
+                    />
+                  </td>
+                  <td>
+                    {{ product.TotalAmount | currency }}
+                  </td>
+                  <td>
+                    <nb-actions size="small">
+                      <nb-action
+                        icon="trash-2-outline"
+                        (click)="removeToCart(product)"
+                      ></nb-action>
+                    </nb-actions>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <label *ngIf="order.OrderItems.length > 0"
+              >Total: {{ order.TotalAmount | currency }}</label
+            >
+
+            <button
+              *ngIf="order.OrderItems.length > 0"
+              (click)="saveOrder()"
+              nbButton
+              status="success"
+              fullWidth
+            >
+              <nb-icon icon="shopping-cart-outline"></nb-icon>Finalizar Compra
+            </button>
+          </nb-card-body>
+        </nb-card>
+      </div>
+    </div>
+  </nb-layout-column>
+
+  <nb-layout-footer fixed>
+    <!-- Insert footer here -->
+  </nb-layout-footer>
+</nb-layout>

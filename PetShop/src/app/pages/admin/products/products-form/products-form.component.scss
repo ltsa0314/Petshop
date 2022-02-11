@@ -1,0 +1,35 @@
+.row {
+  margin-bottom: 1rem;
+}
+button {
+  margin-right: 1rem;
+  float: right;
+}
+
+img {
+  display: block;
+  margin: auto;
+  margin-top: 3rem;
+  height: 12rem !important;
+}
+label {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+textarea {
+    height: 10rem;
+}
+h5 {
+  color: #8994a3;
+}
+
+.close-btn {
+  position: absolute;
+  cursor: pointer;
+  background-color: #ff3d71;
+  margin-top: 0.3rem;
+  margin-left: 0.3rem;
+  font-size: 2rem;
+  font-weight: bold;
+}

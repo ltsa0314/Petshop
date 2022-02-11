@@ -1,0 +1,21 @@
+.table-dark {
+  --bs-table-bg: transparent;
+}
+
+img {
+  width: 2rem;
+}
+.topImage {
+  width: 7rem !important;
+}
+.topInfo {
+  padding-top: 2rem;
+  padding-right: 1rem;
+  span {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+}
+nb-actions {
+  float: right;
+}

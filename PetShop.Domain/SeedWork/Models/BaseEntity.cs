@@ -1,0 +1,8 @@
+﻿namespace PetShop.Domain.SeedWork.Models
+{
+    public class BaseEntity
+    {
+        public long Id { get; set; }
+
+    }
+}
